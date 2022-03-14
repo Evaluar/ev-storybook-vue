@@ -33,7 +33,9 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
-  "dependencies": {},
+  "dependencies": {
+    "artplayer-vue": "^3.5.31"
+  },
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.14.7",
