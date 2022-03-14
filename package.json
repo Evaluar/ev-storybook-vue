@@ -1,6 +1,6 @@
 {
   "name": "ep-npm-library",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "author": "Esteban Palomeque",
   "license": "MIT",
   "description": "Test deploy npm vue library",
