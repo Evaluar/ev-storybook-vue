@@ -1,11 +1,6 @@
 <template>
   <div class="ev-video-player">
-    <ArtplayerComponent
-      v-if="url"
-      :option="option"
-      @getInstance="getInstance"
-      :style="style"
-    />
+    <ArtplayerComponent v-if="url" :option="option" :style="style" />
   </div>
 </template>
 
@@ -48,6 +43,7 @@ export default {
         autoplay: false,
         pip: true,
         autoSize: true,
+        autoMini: true,
         screenshot: true,
         setting: true,
         loop: true,
@@ -86,39 +82,32 @@ export default {
         }
       `
 
-      const reponse = await fetch('https://apis.evaluardev.com/graphql', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: 'Bearer ' + this.token,
-        },
-        body: JSON.stringify({
-          query,
-          variables: {
-            videoId: id,
+      try {
+        const response = await fetch('https://apis.evaluardev.com/graphql', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + this.token,
           },
-        }),
-      })
-      const {
-        data: { getInterviewVideo },
-      } = await reponse.json()
-      //   this.url = getInterviewVideo.url
-      this.url = 'https://artplayer.org/assets/sample/video.mp4'
+          body: JSON.stringify({
+            query,
+            variables: {
+              videoId: id,
+            },
+          }),
+        })
 
-      console.log(getInterviewVideo.url, getInterviewVideo, this.option)
-    },
-
-    getInstance(instance) {
-      console.log('getInstance', instance)
+        const { data } = await response.json()
+        this.url = data.getInterviewVideo.url
+      } catch (e) {
+        throw new Error(e)
+      }
     },
   },
 }
 </script>
 
 <style scoped>
-.ev-video-player {
-  color: gray;
-}
 .art-video-player .art-video {
   background-color: #fff;
 }
