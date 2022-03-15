@@ -1,13 +1,13 @@
 {
-  "name": "ev-library-vue",
+  "name": "ev-components-vue",
   "version": "1.0.0",
   "author": "Esteban Palomeque",
   "license": "MIT",
-  "description": "Test deploy npm vue library",
-  "homepage": "https://github.com/tebasp/ev-storybook-vue",
+  "description": "Storybook Vue Components for Evaluar Projects",
+  "homepage": "https://github.com/Evaluar/ev-storybook-vue",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tebasp/ev-storybook-vue"
+    "url": "https://github.com/Evaluar/ev-storybook-vue"
   },
   "release": {
     "branches": [
