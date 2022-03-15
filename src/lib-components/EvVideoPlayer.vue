@@ -19,6 +19,7 @@ export default {
       type: String,
       default: '',
     },
+
     token: {
       type: String,
       default: '',
