@@ -122,7 +122,7 @@ export default {
 </script>
 
 <style scoped>
-.art-video-player {
+.ev-video-player {
   display: flex;
   justify-content: center;
 }
