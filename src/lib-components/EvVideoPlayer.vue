@@ -1,6 +1,6 @@
 <template>
   <div class="ev-video-player">
-    <ArtplayerComponent v-if="url" :option="option" :style="style" />
+    <ArtplayerComponent :option="option" :style="style" />
   </div>
 </template>
 
@@ -98,6 +98,7 @@ export default {
           }),
         })
 
+        console.log('EvVideoPlayer', response)
         const { data } = await response.json()
         this.url = data.getInterviewVideo.url
       } catch (e) {
