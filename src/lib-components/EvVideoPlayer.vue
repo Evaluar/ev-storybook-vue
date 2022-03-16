@@ -27,14 +27,20 @@ export default {
   },
 
   watch: {
-    id(val) {
-      this.url = null
-      this.request(val)
+    id: {
+      handler(val) {
+        this.url = null
+        this.request(val)
+      },
+      immediate: true,
     },
 
-    token() {
-      this.url = null
-      this.request(this.id)
+    token: {
+      handler() {
+        this.url = null
+        this.request(this.id)
+      },
+      immediate: true,
     },
   },
 
@@ -105,8 +111,8 @@ export default {
         })
 
         const { data } = await response.json()
+        this.url = data.getInterviewVideo?.url
         console.log('EvVideoPlayer', data)
-        this.url = data.getInterviewVideo.url
       } catch (e) {
         throw new Error(e)
       }
