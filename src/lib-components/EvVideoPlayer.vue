@@ -55,7 +55,7 @@ export default {
         muted: false,
         autoplay: false,
         pip: true,
-        autoSize: true,
+        autoSize: false,
         autoMini: true,
         screenshot: true,
         setting: true,
@@ -78,7 +78,7 @@ export default {
     return {
       url: '',
       style: {
-        width: '800px',
+        width: '100%',
         height: '450px',
         margin: '0 auto',
       },
@@ -122,6 +122,10 @@ export default {
 </script>
 
 <style scoped>
+.art-video-player {
+  display: flex;
+  justify-content: center;
+}
 .art-video-player .art-video {
   background-color: #fff;
 }
