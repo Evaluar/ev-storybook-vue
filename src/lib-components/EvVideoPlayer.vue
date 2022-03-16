@@ -28,10 +28,12 @@ export default {
 
   watch: {
     id(val) {
+      this.url = null
       this.request(val)
     },
 
     token() {
+      this.url = null
       this.request(this.id)
     },
   },
