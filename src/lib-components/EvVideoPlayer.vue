@@ -49,8 +49,6 @@ export default {
       return {
         url: this.url,
         title: 'Video',
-        poster:
-          'https://cdn.evaluar.com/website/content/uploads/20210520184451/logo-blue.svg',
         volume: 0.9,
         muted: false,
         autoplay: false,
@@ -112,7 +110,6 @@ export default {
 
         const { data } = await response.json()
         this.url = data.getInterviewVideo?.url
-        console.log('EvVideoPlayer', data)
       } catch (e) {
         throw new Error(e)
       }
