@@ -24,6 +24,11 @@ export default {
       type: String,
       default: '',
     },
+
+    config: {
+      type: Object,
+      default: { player: {}, request: { headers: {}, method: '', body: {} } },
+    },
   },
 
   watch: {
@@ -68,6 +73,7 @@ export default {
         moreVideoAttr: {
           crossOrigin: 'anonymous',
         },
+        ...this.config?.player,
       }
     },
   },
@@ -96,15 +102,18 @@ export default {
       try {
         const response = await fetch('https://apis.evaluardev.com/graphql', {
           method: 'POST',
+          ...this.config?.request?.method,
           headers: {
             'Content-Type': 'application/json',
             Authorization: 'Bearer ' + this.token,
+            ...this.config?.request?.headers,
           },
           body: JSON.stringify({
             query,
             variables: {
               videoId: id,
             },
+            ...this.config?.request?.body,
           }),
         })
 
