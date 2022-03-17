@@ -101,8 +101,7 @@ export default {
 
       try {
         const response = await fetch('https://apis.evaluardev.com/graphql', {
-          method: 'POST',
-          ...this.config?.request?.method,
+          method: `${this.config?.request?.method ?? 'POST'}`,
           headers: {
             'Content-Type': 'application/json',
             Authorization: 'Bearer ' + this.token,
