@@ -27,7 +27,7 @@ export default {
 
     config: {
       type: Object,
-      default: { player: {}, request: { headers: {}, method: '', body: {} } },
+      default: () => {},
     },
   },
 
