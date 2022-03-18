@@ -115,8 +115,6 @@ export default {
         headers['X-PROVIDER_REALM'] = this.realmHeader
       }
 
-      console.log('headers', headers)
-
       try {
         const response = await fetch('https://apis.evaluardev.com/graphql', {
           method: 'POST',
