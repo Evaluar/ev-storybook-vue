@@ -112,7 +112,7 @@ export default {
       }
 
       if (this.realmHeader) {
-        headers['X-PROVIDER_REALM'] = this.realmHeader
+        headers['X-PROVIDER-REALM'] = this.realmHeader
       }
 
       try {
