@@ -29,6 +29,11 @@ export default {
       type: String,
       default: '',
     },
+
+    mediumScreen: {
+      type: Boolean,
+      default: true,
+    },
   },
 
   watch: {
@@ -74,7 +79,7 @@ export default {
         playbackRate: true,
         aspectRatio: true,
         fullscreen: true,
-        fullscreenWeb: true,
+        fullscreenWeb: this.mediumScreen,
         mutex: true,
         theme: '#ffffff',
         lang: 'en',
