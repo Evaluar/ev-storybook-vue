@@ -25,9 +25,9 @@ export default {
       default: '',
     },
 
-    config: {
-      type: Object,
-      default: () => {},
+    realmHeader: {
+      type: String,
+      default: '',
     },
   },
 
@@ -41,6 +41,14 @@ export default {
     },
 
     token: {
+      handler() {
+        this.url = null
+        this.request(this.id)
+      },
+      immediate: true,
+    },
+
+    realmHeader: {
       handler() {
         this.url = null
         this.request(this.id)
@@ -73,7 +81,6 @@ export default {
         moreVideoAttr: {
           crossOrigin: 'anonymous',
         },
-        ...this.config.player,
       }
     },
   },
@@ -99,19 +106,26 @@ export default {
         }
       `
 
+      let headers = {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + this.token,
+      }
+
+      if (this.realmHeader) {
+        headers['X-PROVIDER_REALM'] = this.realmHeader
+      }
+
+      console.log('headers', headers)
+
       try {
         const response = await fetch('https://apis.evaluardev.com/graphql', {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: 'Bearer ' + this.token,
-            ...this.config.request.headers,
-          },
+          method: 'POST',
+          headers,
           body: JSON.stringify({
             query,
             variables: {
               videoId: id,
             },
-            ...this.config.request.body,
           }),
         })
 

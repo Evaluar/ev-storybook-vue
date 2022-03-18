@@ -8,7 +8,7 @@ export default {
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { EvVideoPlayer },
-  template: '<EvVideoPlayer :config="config" v-bind="$props" />',
+  template: '<EvVideoPlayer v-bind="$props" />',
 })
 
 export const Primary = Template.bind({})
@@ -16,5 +16,4 @@ export const Primary = Template.bind({})
 Primary.args = {
   id: '',
   token: '',
-  config: {},
 }
