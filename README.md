@@ -29,7 +29,6 @@ To know all options for Video Player visit it's documentation at: [Artplayer.js]
 ```js
 config: {
     request: {
-        method: 'POST',
         headers: { 'PROVIDER_REALM': 'EV_EXTERNAL' },
         body: {},
     },

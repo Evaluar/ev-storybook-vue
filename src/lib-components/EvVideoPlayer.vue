@@ -73,7 +73,7 @@ export default {
         moreVideoAttr: {
           crossOrigin: 'anonymous',
         },
-        ...this.config?.player,
+        ...this.config.player,
       }
     },
   },
@@ -101,23 +101,22 @@ export default {
 
       try {
         const response = await fetch('https://apis.evaluardev.com/graphql', {
-          method: `${this.config?.request?.method ?? 'POST'}`,
           headers: {
             'Content-Type': 'application/json',
             Authorization: 'Bearer ' + this.token,
-            ...this.config?.request?.headers,
+            ...this.config.request.headers,
           },
           body: JSON.stringify({
             query,
             variables: {
               videoId: id,
             },
-            ...this.config?.request?.body,
+            ...this.config.request.body,
           }),
         })
 
         const { data } = await response.json()
-        this.url = data.getInterviewVideo?.url
+        this.url = data.getInterviewVideo.url
       } catch (e) {
         throw new Error(e)
       }
