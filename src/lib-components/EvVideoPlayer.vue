@@ -34,6 +34,11 @@ export default {
       type: Boolean,
       default: true,
     },
+
+    environment: {
+      type: string,
+      default: 'https://apis.evaluar.com/graphql'
+    }
   },
 
   watch: {
@@ -121,7 +126,7 @@ export default {
       }
 
       try {
-        const response = await fetch('https://apis.evaluardev.com/graphql', {
+        const response = await fetch(this.environment, {
           method: 'POST',
           headers,
           body: JSON.stringify({
