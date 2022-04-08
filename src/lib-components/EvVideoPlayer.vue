@@ -36,7 +36,7 @@ export default {
     },
 
     environment: {
-      type: string,
+      type: String,
       default: 'https://apis.evaluar.com/graphql'
     }
   },
