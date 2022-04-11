@@ -56,7 +56,6 @@ export default {
 
   data() {
     return {
-      url: '',
       style: {
         width: '100%',
         height: '450px',
