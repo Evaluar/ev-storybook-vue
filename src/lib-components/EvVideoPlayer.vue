@@ -15,56 +15,15 @@ export default {
   },
 
   props: {
-    id: {
-      type: String,
-      default: '',
-    },
-
-    token: {
-      type: String,
-      default: '',
-    },
-
-    realmHeader: {
-      type: String,
-      default: '',
-    },
-
     mediumScreen: {
       type: Boolean,
       default: true,
     },
 
-    environment: {
+    url: {
       type: String,
-      default: 'https://apis.evaluar.com/graphql'
+      default: ''
     }
-  },
-
-  watch: {
-    id: {
-      handler(val) {
-        this.url = null
-        this.request(val)
-      },
-      immediate: true,
-    },
-
-    token: {
-      handler() {
-        this.url = null
-        this.request(this.id)
-      },
-      immediate: true,
-    },
-
-    realmHeader: {
-      handler() {
-        this.url = null
-        this.request(this.id)
-      },
-      immediate: true,
-    },
   },
 
   computed: {
@@ -104,46 +63,7 @@ export default {
         margin: '0 auto',
       },
     }
-  },
-
-  methods: {
-    async request(id) {
-      const query = `
-        query GetInterviewVideo($videoId: String!) {
-            getInterviewVideo(videoId: $videoId) {
-                url
-            }
-        }
-      `
-
-      let headers = {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + this.token,
-      }
-
-      if (this.realmHeader) {
-        headers['X-PROVIDER-REALM'] = this.realmHeader
-      }
-
-      try {
-        const response = await fetch(this.environment, {
-          method: 'POST',
-          headers,
-          body: JSON.stringify({
-            query,
-            variables: {
-              videoId: id,
-            },
-          }),
-        })
-
-        const { data } = await response.json()
-        this.url = data.getInterviewVideo.url
-      } catch (e) {
-        throw new Error(e)
-      }
-    },
-  },
+  }
 }
 </script>
 
